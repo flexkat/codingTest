@@ -4,6 +4,13 @@ let s4 = "ell that en";
 let s1 = "hat end";
 let s2 = "t ends well";
 
+let a1 = "an apple doesnt";
+let a2 = "nt fall fa";
+let a3 = "ll far"
+let a4 = "ar from th"
+let a5 = "he tree";
+
+
 const mergeStrings = (string1, string2) => {
   let mergedString = "";
 
@@ -36,6 +43,7 @@ const mergeStrings = (string1, string2) => {
 
 const checkOverlap = (string1, string2) => {
   let overlapMax = 0;
+  let overlapSection = ""
 
   if (!string1 || !string2) {
     console.log("error, missing a string")
@@ -49,6 +57,7 @@ const checkOverlap = (string1, string2) => {
 
       if (string1.startsWith(substring)) {
         overlapMax = i;
+        overlapSection = substring
       }
     }
 
@@ -57,6 +66,7 @@ const checkOverlap = (string1, string2) => {
 
       if (string1.endsWith(substring)) {
         overlapMax = i;
+        overlapSection = substring
       }
     }
   }
@@ -71,6 +81,8 @@ const assembleFragments = (strings) => {
   let stringB = "";
   let maxOverlapValue = 0;
 
+  if (!strings || strings.length < 1) return "Error: Missing strings"
+
   // for each string pass it through checkOverlap and record overlapMax
   // if overlapMax is the largest value => add that merged string and remove the piece strings
   // start again and compare each string to each other
@@ -79,8 +91,6 @@ const assembleFragments = (strings) => {
     // string 1 compares 2,3,4
     // string 2 compares 3,4
     // string 3 compares 4
-
-
 
     while (indexOfSecondString <= strings.length - 1) {
       let overlapMax = checkOverlap(strings[i], strings[indexOfSecondString])
@@ -95,7 +105,6 @@ const assembleFragments = (strings) => {
   }
 
   mergedString = mergeStrings(stringA, stringB)
-  console.log({ maxOverlapValue, stringA, stringB })
 
   let newStrings = strings.filter(string => {
     if (string == stringA || string == stringB) return false
@@ -105,21 +114,15 @@ const assembleFragments = (strings) => {
 
   newStrings.push(mergedString)
 
-  console.log({ newStrings }, newStrings.length)
-
-  if (newStrings.length == 1) return newStrings[0]
-  else {
-    assembleFragments(newStrings)
-
+  if (newStrings.length > 1) {
+    return assembleFragments(newStrings);
   }
-  return newStrings;
+  return newStrings[0];
 }
 
-assembleFragments([s1, s2, s3, s4]);
+// assembleFragments([a1, a2, a3, a4, a5]);
 
 
 
 
-
-
-// export { checkOverlap, assembleFragments, mergeStrings }
+export { checkOverlap, assembleFragments, mergeStrings }
