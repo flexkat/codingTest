@@ -26,6 +26,6 @@ const mergeFragments = (fragment1, fragment2) => {
   if (!mergedString) mergedString = fragment1 + fragment2;
 
   return mergedString;
-}
+};
 
 module.exports = mergeFragments;

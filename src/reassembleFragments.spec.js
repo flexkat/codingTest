@@ -1,16 +1,24 @@
-const reassembleFragments = require('./reassembleFragments');
+const reassembleFragments = require("./reassembleFragments");
 
-describe('reassembleFragments', () => {
-  let testStringArrayOne = ["all is well", "ell that en", "hat end", "t ends well"]
+describe("reassembleFragments", () => {
+  let testArray = ["all is well", "ell that en", "hat end", "t ends well"];
 
-  it('should return a string from an array of strings', () => {
-    expect(reassembleFragments(testStringArrayOne)).toBe("all is well that ends well")
-  })
-  it('should return "Error: Missing strings" if no args passed in', () => {
-    expect(reassembleFragments()).toBe("Error: Missing strings")
-  })
-  it('should return "Error: Missing strings" if an empty array passed in', () => {
-    expect(reassembleFragments([])).toBe("Error: Missing strings")
-  })
-})
-
+  it("should return a string from an array of strings", () => {
+    expect(reassembleFragments(testArray)).toBe("all is well that ends well");
+  });
+  it("should throw an error if no args passed in", () => {
+    expect(() => {
+      reassembleFragments();
+    }).toThrow("Missing fragments to reassemble");
+  });
+  it("should throw an error if an empty array passed in", () => {
+    expect(() => {
+      reassembleFragments([]);
+    }).toThrow("Missing fragments to reassemble");
+  });
+  it("should throw an error if an array is not passed in", () => {
+    expect(() => {
+      reassembleFragments("abcd", "cdef");
+    }).toThrow("Fragments need to be in an array to be reassembled");
+  });
+});
