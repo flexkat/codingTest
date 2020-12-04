@@ -1,4 +1,3 @@
-const { describe } = require('@jest/globals');
 const reassembleFragments = require('./reassembleFragments');
 
 describe('reassembleFragments', () => {

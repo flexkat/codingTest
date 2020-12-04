@@ -1,4 +1,3 @@
-const { describe } = require('@jest/globals');
 const mergeFragments = require('./mergeFragments');
 
 describe('mergeFragments', () => {

@@ -1,4 +1,3 @@
-const { describe } = require('@jest/globals');
 const checkOverlap = require('./checkOverlap');
 
 describe('checkOverlap', () => {
