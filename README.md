@@ -1,6 +1,6 @@
 # Coding Test
 
-## Prerequesites:
+## Prerequisites:
 
 - Node: v10.15.3
 - NPM: v6.4.1
